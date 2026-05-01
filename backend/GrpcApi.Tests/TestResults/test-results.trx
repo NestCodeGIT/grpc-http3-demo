@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e1a544b7-6700-437c-8d20-c01273197823" name="@Es-C 2026-05-01 18:44:20" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-05-01T18:44:20.7915998+02:00" queuing="2026-05-01T18:44:20.7915999+02:00" start="2026-05-01T18:44:19.1004247+02:00" finish="2026-05-01T18:44:20.8665730+02:00" />
+  <TestSettings name="default" id="21c22d1f-afdd-4afd-9dfd-c8aef4710c7c">
+    <Deployment runDeploymentRoot="_Es-C_2026-05-01_18_44_20" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="48a8822a-dbf2-466f-997a-7b89e32e5fd0" testId="87d9bffb-fd58-9e82-1917-9a1fb2edea14" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.DeleteTask_throws_InvalidArgument_for_malformed_id" computerName="Es-C" duration="00:00:00.0029462" startTime="2026-05-01T18:44:20.7518444+02:00" endTime="2026-05-01T18:44:20.7518446+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="48a8822a-dbf2-466f-997a-7b89e32e5fd0" />
+    <UnitTestResult executionId="22a9ceca-7223-43db-aeba-e436326610ea" testId="61383498-d5d5-a08d-22e1-1027becd32a8" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.DeleteTask_returns_success_false_when_missing_instead_of_throwing" computerName="Es-C" duration="00:00:00.0240897" startTime="2026-05-01T18:44:20.7303022+02:00" endTime="2026-05-01T18:44:20.7303022+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="22a9ceca-7223-43db-aeba-e436326610ea" />
+    <UnitTestResult executionId="6ebf1c2b-9c62-4406-87ed-b3411c25d15b" testId="66b989c9-ea2f-c417-3a5b-531a57f7d51a" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.CreateTask_throws_InvalidArgument_when_title_is_blank(title: &quot;&quot;)" computerName="Es-C" duration="00:00:00.0003983" startTime="2026-05-01T18:44:20.7358574+02:00" endTime="2026-05-01T18:44:20.7358575+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6ebf1c2b-9c62-4406-87ed-b3411c25d15b" />
+    <UnitTestResult executionId="fcfe4272-41d1-4095-833b-3dda567a9028" testId="cf91f693-ba67-1d63-6c4d-d8022e7971c5" testName="GrpcApi.Tests.TaskEntityTests.TaskEntity_has_sane_defaults" computerName="Es-C" duration="00:00:00.0031631" startTime="2026-05-01T18:44:20.7299403+02:00" endTime="2026-05-01T18:44:20.7299405+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fcfe4272-41d1-4095-833b-3dda567a9028" />
+    <UnitTestResult executionId="eb7c5d44-d7c5-4e25-b457-df2ba5001fe5" testId="bf3000d1-b2a1-c345-9380-04e25d92c69a" testName="GrpcApi.Tests.TaskEntityTests.AppDbContext_round_trips_a_task" computerName="Es-C" duration="00:00:00.7226508" startTime="2026-05-01T18:44:20.6519643+02:00" endTime="2026-05-01T18:44:20.6519644+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eb7c5d44-d7c5-4e25-b457-df2ba5001fe5" />
+    <UnitTestResult executionId="63a6f4c9-a517-40ce-8105-b12ad8cc3038" testId="501c2597-795a-0f06-1426-392cacd47637" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.GetTask_throws_NotFound_for_missing_id" computerName="Es-C" duration="00:00:00.0027367" startTime="2026-05-01T18:44:20.7543693+02:00" endTime="2026-05-01T18:44:20.7543694+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="63a6f4c9-a517-40ce-8105-b12ad8cc3038" />
+    <UnitTestResult executionId="36dead5f-efb4-4414-b845-01bda58df166" testId="243a3e1c-4ad3-7749-9ab4-3fa5183dfe86" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_throws_NotFound_for_missing_id" computerName="Es-C" duration="00:00:00.0052433" startTime="2026-05-01T18:44:20.7362152+02:00" endTime="2026-05-01T18:44:20.7362152+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="36dead5f-efb4-4414-b845-01bda58df166" />
+    <UnitTestResult executionId="b39f1534-90e9-4701-92bf-76636396a5d8" testId="7a20aa25-03e9-8063-8059-50db2c0dc65d" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.ListTasks_uses_default_page_size_when_unspecified" computerName="Es-C" duration="00:00:00.0026621" startTime="2026-05-01T18:44:20.7432478+02:00" endTime="2026-05-01T18:44:20.7432479+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b39f1534-90e9-4701-92bf-76636396a5d8" />
+    <UnitTestResult executionId="cb666208-876a-4255-878f-a5364d4c7323" testId="cbc3bfec-b60a-e4d3-2492-b857a9a7273b" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_advances_UpdatedAt_timestamp" computerName="Es-C" duration="00:00:00.0024159" startTime="2026-05-01T18:44:20.6476007+02:00" endTime="2026-05-01T18:44:20.6476011+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cb666208-876a-4255-878f-a5364d4c7323" />
+    <UnitTestResult executionId="c8435ee3-96a4-4f8c-acbd-d1b289196089" testId="96f148da-3fa3-f262-7419-5da731c18459" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.ListTasks_clamps_page_size_to_100" computerName="Es-C" duration="00:00:00.0051436" startTime="2026-05-01T18:44:20.7492846+02:00" endTime="2026-05-01T18:44:20.7492851+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c8435ee3-96a4-4f8c-acbd-d1b289196089" />
+    <UnitTestResult executionId="f12b4e59-e650-45b8-82a6-6be155aa7b7d" testId="74b5dc91-02a7-1d59-7e10-eae007a804a7" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.CreateTask_throws_InvalidArgument_when_title_is_blank(title: &quot;   &quot;)" computerName="Es-C" duration="00:00:00.0032472" startTime="2026-05-01T18:44:20.7305939+02:00" endTime="2026-05-01T18:44:20.7305939+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f12b4e59-e650-45b8-82a6-6be155aa7b7d" />
+    <UnitTestResult executionId="8d8dd89b-a074-46fd-a500-0b4d54572468" testId="9df4ddaf-5e15-9dca-f0c3-6b515c69eb1c" testName="GrpcApi.Tests.TaskGrpcServiceStreamingTests.StreamTasks_writes_existing_tasks_then_stops_on_cancellation" computerName="Es-C" duration="00:00:00.7340899" startTime="2026-05-01T18:44:20.7303550+02:00" endTime="2026-05-01T18:44:20.7303551+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8d8dd89b-a074-46fd-a500-0b4d54572468" />
+    <UnitTestResult executionId="107f322f-7f3e-43f9-b9b6-38846347f8fa" testId="c0668961-5fe2-0c4f-2185-374973f00c47" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_accepts_all_valid_statuses(status: &quot;done&quot;)" computerName="Es-C" duration="00:00:00.0005009" startTime="2026-05-01T18:44:20.5702831+02:00" endTime="2026-05-01T18:44:20.5702832+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="107f322f-7f3e-43f9-b9b6-38846347f8fa" />
+    <UnitTestResult executionId="239a88e0-7f7a-4031-9ca4-047cd654af5b" testId="63aaeaf3-c1dd-8be2-295c-8b22fdbdb0d2" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_accepts_all_valid_statuses(status: &quot;cancelled&quot;)" computerName="Es-C" duration="00:00:00.0464942" startTime="2026-05-01T18:44:20.5675012+02:00" endTime="2026-05-01T18:44:20.5675013+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="239a88e0-7f7a-4031-9ca4-047cd654af5b" />
+    <UnitTestResult executionId="31ef92ff-510d-4b1f-a887-19d3d826afbf" testId="8e0219aa-c447-2fbe-4606-7430612e24b0" testName="GrpcApi.Tests.TaskGrpcServiceStreamingTests.StreamTasks_returns_immediately_if_already_cancelled" computerName="Es-C" duration="00:00:00.0031186" startTime="2026-05-01T18:44:20.7305090+02:00" endTime="2026-05-01T18:44:20.7305090+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31ef92ff-510d-4b1f-a887-19d3d826afbf" />
+    <UnitTestResult executionId="ed232583-1b33-46ee-a9d5-ded13cdc7dd2" testId="b45b3c3c-2a1a-0e59-f745-0469ae42985c" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.ListTasks_returns_newest_first_and_respects_paging" computerName="Es-C" duration="00:00:00.0204948" startTime="2026-05-01T18:44:20.7305490+02:00" endTime="2026-05-01T18:44:20.7305490+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ed232583-1b33-46ee-a9d5-ded13cdc7dd2" />
+    <UnitTestResult executionId="886d3dd6-ffb1-4b17-8489-0fefcf2b6e61" testId="334e6b4f-6d3a-4310-e554-922cba645808" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_accepts_all_valid_statuses(status: &quot;in_progress&quot;)" computerName="Es-C" duration="00:00:00.0005488" startTime="2026-05-01T18:44:20.5680415+02:00" endTime="2026-05-01T18:44:20.5680416+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="886d3dd6-ffb1-4b17-8489-0fefcf2b6e61" />
+    <UnitTestResult executionId="79993705-be6b-481c-b4f5-5ed615410831" testId="d2b11504-498e-dadc-c5da-6da6fb71bf9b" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.CreateTask_persists_entity_and_returns_it_with_pending_status" computerName="Es-C" duration="00:00:00.0040587" startTime="2026-05-01T18:44:20.7589074+02:00" endTime="2026-05-01T18:44:20.7589075+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="79993705-be6b-481c-b4f5-5ed615410831" />
+    <UnitTestResult executionId="47fb6f54-033f-4f1f-aacf-231b65cc0f5a" testId="18c88523-d670-5119-86d9-630e838cf849" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.GetTask_returns_existing_task" computerName="Es-C" duration="00:00:00.0015965" startTime="2026-05-01T18:44:20.7380418+02:00" endTime="2026-05-01T18:44:20.7380419+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="47fb6f54-033f-4f1f-aacf-231b65cc0f5a" />
+    <UnitTestResult executionId="50c30417-4e6c-45e1-a1ff-e9ab83056244" testId="edddb03c-7abf-f17b-b84b-cc027e1a6576" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.CreateTask_throws_InvalidArgument_when_title_is_blank(title: null)" computerName="Es-C" duration="00:00:00.0006900" startTime="2026-05-01T18:44:20.7306302+02:00" endTime="2026-05-01T18:44:20.7306302+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="50c30417-4e6c-45e1-a1ff-e9ab83056244" />
+    <UnitTestResult executionId="cec10a43-5da2-484f-a117-85ff340806e0" testId="a32454c1-63d8-3166-f8c1-f2b318d9c652" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.DeleteTask_removes_entity_and_returns_success" computerName="Es-C" duration="00:00:00.0757492" startTime="2026-05-01T18:44:20.6448128+02:00" endTime="2026-05-01T18:44:20.6448129+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cec10a43-5da2-484f-a117-85ff340806e0" />
+    <UnitTestResult executionId="28e81701-9641-49be-b855-f24bbdb43da1" testId="d4b3f380-1743-9273-79b8-ab08e932ece8" testName="GrpcApi.Tests.TaskGrpcServiceStreamingTests.StreamTasks_filters_by_status" computerName="Es-C" duration="00:00:00.0381811" startTime="2026-05-01T18:44:20.7304616+02:00" endTime="2026-05-01T18:44:20.7304616+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="28e81701-9641-49be-b855-f24bbdb43da1" />
+    <UnitTestResult executionId="a045c643-9864-4222-92a5-4775c0770ffd" testId="53c6ff19-3483-16d5-fd39-6383275139f4" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_rejects_unknown_status" computerName="Es-C" duration="00:00:00.0023515" startTime="2026-05-01T18:44:20.7404830+02:00" endTime="2026-05-01T18:44:20.7404831+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a045c643-9864-4222-92a5-4775c0770ffd" />
+    <UnitTestResult executionId="e273738e-1e9f-46c2-a0e9-5b4f517ceeeb" testId="1b47baac-2435-dde8-a955-366df60f8c62" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.GetTask_throws_InvalidArgument_for_malformed_id" computerName="Es-C" duration="00:00:00.0336589" startTime="2026-05-01T18:44:20.7304032+02:00" endTime="2026-05-01T18:44:20.7304033+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e273738e-1e9f-46c2-a0e9-5b4f517ceeeb" />
+    <UnitTestResult executionId="22f07d36-4c0a-4122-88d4-981bbc0aa825" testId="7959b8fc-aace-55fd-62ed-7d4670fb532a" testName="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_accepts_all_valid_statuses(status: &quot;pending&quot;)" computerName="Es-C" duration="00:00:00.5866481" startTime="2026-05-01T18:44:20.5231600+02:00" endTime="2026-05-01T18:44:20.5231991+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="22f07d36-4c0a-4122-88d4-981bbc0aa825" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="GrpcApi.Tests.TaskEntityTests.TaskEntity_has_sane_defaults" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="cf91f693-ba67-1d63-6c4d-d8022e7971c5">
+      <Execution id="fcfe4272-41d1-4095-833b-3dda567a9028" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskEntityTests" name="TaskEntity_has_sane_defaults" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceStreamingTests.StreamTasks_filters_by_status" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="d4b3f380-1743-9273-79b8-ab08e932ece8">
+      <Execution id="28e81701-9641-49be-b855-f24bbdb43da1" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceStreamingTests" name="StreamTasks_filters_by_status" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.ListTasks_clamps_page_size_to_100" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="96f148da-3fa3-f262-7419-5da731c18459">
+      <Execution id="c8435ee3-96a4-4f8c-acbd-d1b289196089" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="ListTasks_clamps_page_size_to_100" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.CreateTask_throws_InvalidArgument_when_title_is_blank(title: null)" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="edddb03c-7abf-f17b-b84b-cc027e1a6576">
+      <Execution id="50c30417-4e6c-45e1-a1ff-e9ab83056244" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="CreateTask_throws_InvalidArgument_when_title_is_blank" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.GetTask_throws_NotFound_for_missing_id" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="501c2597-795a-0f06-1426-392cacd47637">
+      <Execution id="63a6f4c9-a517-40ce-8105-b12ad8cc3038" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="GetTask_throws_NotFound_for_missing_id" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_throws_NotFound_for_missing_id" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="243a3e1c-4ad3-7749-9ab4-3fa5183dfe86">
+      <Execution id="36dead5f-efb4-4414-b845-01bda58df166" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="UpdateTask_throws_NotFound_for_missing_id" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.ListTasks_returns_newest_first_and_respects_paging" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="b45b3c3c-2a1a-0e59-f745-0469ae42985c">
+      <Execution id="ed232583-1b33-46ee-a9d5-ded13cdc7dd2" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="ListTasks_returns_newest_first_and_respects_paging" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_accepts_all_valid_statuses(status: &quot;done&quot;)" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="c0668961-5fe2-0c4f-2185-374973f00c47">
+      <Execution id="107f322f-7f3e-43f9-b9b6-38846347f8fa" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="UpdateTask_accepts_all_valid_statuses" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceStreamingTests.StreamTasks_writes_existing_tasks_then_stops_on_cancellation" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="9df4ddaf-5e15-9dca-f0c3-6b515c69eb1c">
+      <Execution id="8d8dd89b-a074-46fd-a500-0b4d54572468" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceStreamingTests" name="StreamTasks_writes_existing_tasks_then_stops_on_cancellation" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.ListTasks_uses_default_page_size_when_unspecified" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="7a20aa25-03e9-8063-8059-50db2c0dc65d">
+      <Execution id="b39f1534-90e9-4701-92bf-76636396a5d8" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="ListTasks_uses_default_page_size_when_unspecified" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_accepts_all_valid_statuses(status: &quot;pending&quot;)" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="7959b8fc-aace-55fd-62ed-7d4670fb532a">
+      <Execution id="22f07d36-4c0a-4122-88d4-981bbc0aa825" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="UpdateTask_accepts_all_valid_statuses" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_accepts_all_valid_statuses(status: &quot;in_progress&quot;)" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="334e6b4f-6d3a-4310-e554-922cba645808">
+      <Execution id="886d3dd6-ffb1-4b17-8489-0fefcf2b6e61" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="UpdateTask_accepts_all_valid_statuses" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.CreateTask_throws_InvalidArgument_when_title_is_blank(title: &quot;&quot;)" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="66b989c9-ea2f-c417-3a5b-531a57f7d51a">
+      <Execution id="6ebf1c2b-9c62-4406-87ed-b3411c25d15b" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="CreateTask_throws_InvalidArgument_when_title_is_blank" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.CreateTask_persists_entity_and_returns_it_with_pending_status" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="d2b11504-498e-dadc-c5da-6da6fb71bf9b">
+      <Execution id="79993705-be6b-481c-b4f5-5ed615410831" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="CreateTask_persists_entity_and_returns_it_with_pending_status" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.DeleteTask_throws_InvalidArgument_for_malformed_id" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="87d9bffb-fd58-9e82-1917-9a1fb2edea14">
+      <Execution id="48a8822a-dbf2-466f-997a-7b89e32e5fd0" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="DeleteTask_throws_InvalidArgument_for_malformed_id" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.GetTask_returns_existing_task" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="18c88523-d670-5119-86d9-630e838cf849">
+      <Execution id="47fb6f54-033f-4f1f-aacf-231b65cc0f5a" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="GetTask_returns_existing_task" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.DeleteTask_removes_entity_and_returns_success" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="a32454c1-63d8-3166-f8c1-f2b318d9c652">
+      <Execution id="cec10a43-5da2-484f-a117-85ff340806e0" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="DeleteTask_removes_entity_and_returns_success" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskEntityTests.AppDbContext_round_trips_a_task" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="bf3000d1-b2a1-c345-9380-04e25d92c69a">
+      <Execution id="eb7c5d44-d7c5-4e25-b457-df2ba5001fe5" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskEntityTests" name="AppDbContext_round_trips_a_task" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_rejects_unknown_status" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="53c6ff19-3483-16d5-fd39-6383275139f4">
+      <Execution id="a045c643-9864-4222-92a5-4775c0770ffd" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="UpdateTask_rejects_unknown_status" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.CreateTask_throws_InvalidArgument_when_title_is_blank(title: &quot;   &quot;)" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="74b5dc91-02a7-1d59-7e10-eae007a804a7">
+      <Execution id="f12b4e59-e650-45b8-82a6-6be155aa7b7d" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="CreateTask_throws_InvalidArgument_when_title_is_blank" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.DeleteTask_returns_success_false_when_missing_instead_of_throwing" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="61383498-d5d5-a08d-22e1-1027becd32a8">
+      <Execution id="22a9ceca-7223-43db-aeba-e436326610ea" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="DeleteTask_returns_success_false_when_missing_instead_of_throwing" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_accepts_all_valid_statuses(status: &quot;cancelled&quot;)" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="63aaeaf3-c1dd-8be2-295c-8b22fdbdb0d2">
+      <Execution id="239a88e0-7f7a-4031-9ca4-047cd654af5b" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="UpdateTask_accepts_all_valid_statuses" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.GetTask_throws_InvalidArgument_for_malformed_id" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="1b47baac-2435-dde8-a955-366df60f8c62">
+      <Execution id="e273738e-1e9f-46c2-a0e9-5b4f517ceeeb" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="GetTask_throws_InvalidArgument_for_malformed_id" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceStreamingTests.StreamTasks_returns_immediately_if_already_cancelled" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="8e0219aa-c447-2fbe-4606-7430612e24b0">
+      <Execution id="31ef92ff-510d-4b1f-a887-19d3d826afbf" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceStreamingTests" name="StreamTasks_returns_immediately_if_already_cancelled" />
+    </UnitTest>
+    <UnitTest name="GrpcApi.Tests.TaskGrpcServiceUnaryTests.UpdateTask_advances_UpdatedAt_timestamp" storage="/home/pell/desktop/project/grpc-http3-demo/backend/grpcapi.tests/bin/release/net8.0/grpcapi.tests.dll" id="cbc3bfec-b60a-e4d3-2492-b857a9a7273b">
+      <Execution id="cb666208-876a-4255-878f-a5364d4c7323" />
+      <TestMethod codeBase="/home/pell/Desktop/project/grpc-http3-demo/backend/GrpcApi.Tests/bin/Release/net8.0/GrpcApi.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="GrpcApi.Tests.TaskGrpcServiceUnaryTests" name="UpdateTask_advances_UpdatedAt_timestamp" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="87d9bffb-fd58-9e82-1917-9a1fb2edea14" executionId="48a8822a-dbf2-466f-997a-7b89e32e5fd0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="61383498-d5d5-a08d-22e1-1027becd32a8" executionId="22a9ceca-7223-43db-aeba-e436326610ea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="66b989c9-ea2f-c417-3a5b-531a57f7d51a" executionId="6ebf1c2b-9c62-4406-87ed-b3411c25d15b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cf91f693-ba67-1d63-6c4d-d8022e7971c5" executionId="fcfe4272-41d1-4095-833b-3dda567a9028" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bf3000d1-b2a1-c345-9380-04e25d92c69a" executionId="eb7c5d44-d7c5-4e25-b457-df2ba5001fe5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="501c2597-795a-0f06-1426-392cacd47637" executionId="63a6f4c9-a517-40ce-8105-b12ad8cc3038" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="243a3e1c-4ad3-7749-9ab4-3fa5183dfe86" executionId="36dead5f-efb4-4414-b845-01bda58df166" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7a20aa25-03e9-8063-8059-50db2c0dc65d" executionId="b39f1534-90e9-4701-92bf-76636396a5d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cbc3bfec-b60a-e4d3-2492-b857a9a7273b" executionId="cb666208-876a-4255-878f-a5364d4c7323" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="96f148da-3fa3-f262-7419-5da731c18459" executionId="c8435ee3-96a4-4f8c-acbd-d1b289196089" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="74b5dc91-02a7-1d59-7e10-eae007a804a7" executionId="f12b4e59-e650-45b8-82a6-6be155aa7b7d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9df4ddaf-5e15-9dca-f0c3-6b515c69eb1c" executionId="8d8dd89b-a074-46fd-a500-0b4d54572468" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c0668961-5fe2-0c4f-2185-374973f00c47" executionId="107f322f-7f3e-43f9-b9b6-38846347f8fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="63aaeaf3-c1dd-8be2-295c-8b22fdbdb0d2" executionId="239a88e0-7f7a-4031-9ca4-047cd654af5b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8e0219aa-c447-2fbe-4606-7430612e24b0" executionId="31ef92ff-510d-4b1f-a887-19d3d826afbf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b45b3c3c-2a1a-0e59-f745-0469ae42985c" executionId="ed232583-1b33-46ee-a9d5-ded13cdc7dd2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="334e6b4f-6d3a-4310-e554-922cba645808" executionId="886d3dd6-ffb1-4b17-8489-0fefcf2b6e61" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d2b11504-498e-dadc-c5da-6da6fb71bf9b" executionId="79993705-be6b-481c-b4f5-5ed615410831" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="18c88523-d670-5119-86d9-630e838cf849" executionId="47fb6f54-033f-4f1f-aacf-231b65cc0f5a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="edddb03c-7abf-f17b-b84b-cc027e1a6576" executionId="50c30417-4e6c-45e1-a1ff-e9ab83056244" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a32454c1-63d8-3166-f8c1-f2b318d9c652" executionId="cec10a43-5da2-484f-a117-85ff340806e0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d4b3f380-1743-9273-79b8-ab08e932ece8" executionId="28e81701-9641-49be-b855-f24bbdb43da1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="53c6ff19-3483-16d5-fd39-6383275139f4" executionId="a045c643-9864-4222-92a5-4775c0770ffd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1b47baac-2435-dde8-a955-366df60f8c62" executionId="e273738e-1e9f-46c2-a0e9-5b4f517ceeeb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7959b8fc-aace-55fd-62ed-7d4670fb532a" executionId="22f07d36-4c0a-4122-88d4-981bbc0aa825" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="25" executed="25" passed="25" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.7+8f2703126a (64-bit .NET 8.0.26)
+[xUnit.net 00:00:00.10]   Discovering: GrpcApi.Tests
+[xUnit.net 00:00:00.17]   Discovered:  GrpcApi.Tests
+[xUnit.net 00:00:00.17]   Starting:    GrpcApi.Tests
+[xUnit.net 00:00:01.07]   Finished:    GrpcApi.Tests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

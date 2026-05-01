@@ -1,0 +1,11 @@
+.env
+certs/*.crt
+certs/*.key
+backend/**/bin/
+backend/**/obj/
+frontend/node_modules/
+frontend/dist/
+frontend/src/app/core/grpc/generated/
+*.user
+.DS_Store
+logs/

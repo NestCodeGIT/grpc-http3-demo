@@ -1,0 +1,59 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: grpc_tasks
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001/tcp"
+      - "5001:5001/udp"   # UDP required for QUIC / HTTP/3
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=postgres;Database=grpc_tasks;Username=postgres;Password=postgres"
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: "https://+:5001"
+      ASPNETCORE_Kestrel__Certificates__Default__Path: "/app/certs/api.crt"
+      ASPNETCORE_Kestrel__Certificates__Default__KeyPath: "/app/certs/api.key"
+    volumes:
+      - ./certs:/app/certs:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  envoy:
+    image: envoyproxy/envoy:v1.29-latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./proxy/envoy.yaml:/etc/envoy/envoy.yaml:ro
+    depends_on:
+      - api
+    command: /usr/local/bin/envoy -c /etc/envoy/envoy.yaml
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - envoy
+
+volumes:
+  pgdata:

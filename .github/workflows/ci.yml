@@ -8,7 +8,7 @@ on:
 
 jobs:
   backend:
-    name: Backend (.NET 8 + gRPC)
+    name: Backend (.NET 10 + gRPC)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -32,10 +32,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup .NET 8
+      - name: Setup .NET 10
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.x'
 
       - name: Restore (API)
         run: dotnet restore GrpcApi/GrpcApi.csproj
@@ -59,7 +59,7 @@ jobs:
           path: backend/GrpcApi.Tests/TestResults/
 
   frontend:
-    name: Frontend (Angular 17)
+    name: Frontend (Angular 21)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -68,15 +68,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node 20
+      - name: Setup Node 22
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: frontend/package-lock.json
 
+      - name: Install protoc + grpc-web plugin
+        run: |
+          sudo apt-get update && sudo apt-get install -y protobuf-compiler
+          curl -fsSL https://github.com/grpc/grpc-web/releases/download/1.5.0/protoc-gen-grpc-web-1.5.0-linux-x86_64 \
+            -o /usr/local/bin/protoc-gen-grpc-web
+          sudo chmod +x /usr/local/bin/protoc-gen-grpc-web
+
       - name: Install
         run: npm ci
+
+      - name: Generate gRPC-Web client
+        run: npm run proto:gen
 
       - name: Build
         run: npm run build:prod
@@ -106,6 +116,7 @@ jobs:
       - name: Build Frontend image
         uses: docker/build-push-action@v5
         with:
-          context: ./frontend
+          context: .
+          file: ./frontend/Dockerfile
           push: false
           tags: grpc-http3-frontend:${{ github.sha }}

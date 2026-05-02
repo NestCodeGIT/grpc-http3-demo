@@ -4,13 +4,13 @@
 
   <img src="docs/roadmap/roadmap.svg" alt="Project roadmap" width="100%">
 
-  <h3>A production-grade full-stack application demonstrating <strong>gRPC server-streaming</strong> and <strong>HTTP/3 (QUIC)</strong> transport — built with ASP.NET Core 8 and Angular 17.</h3>
+  <h3>A production-grade full-stack application demonstrating <strong>gRPC server-streaming</strong> and <strong>HTTP/3 (QUIC)</strong> transport — built with ASP.NET Core 10 and Angular 21.</h3>
 
   <p>
     <a href="https://github.com/yourusername/grpc-http3-demo/actions/workflows/ci.yml">
       <img src="https://github.com/yourusername/grpc-http3-demo/actions/workflows/ci.yml/badge.svg" alt="CI">
     </a>
-    <img src="https://img.shields.io/badge/.NET-8.0-512bd4?logo=dotnet&logoColor=white" alt=".NET 8">
+    <img src="https://img.shields.io/badge/.NET-10.0-512bd4?logo=dotnet&logoColor=white" alt=".NET 10">
     <img src="https://img.shields.io/badge/Angular-17-dd0031?logo=angular&logoColor=white" alt="Angular 17">
     <img src="https://img.shields.io/badge/gRPC-protocol-00BCD4" alt="gRPC">
     <img src="https://img.shields.io/badge/HTTP%2F3-QUIC-4CAF50" alt="HTTP/3">
@@ -19,9 +19,9 @@
   </p>
 
   <p>
-    📖 <a href="docs/article.md"><strong>Read the article</strong></a>
+
     &nbsp;·&nbsp;
-    🇩🇪 <a href="docs/roadmap/tutorial.md"><strong>Tutorial (Deutsch)</strong></a>
+   <a href="docs/roadmap/tutorial.md"><strong>Tutorial (Deutsch)</strong></a>
     &nbsp;·&nbsp;
     ✅ <a href="docs/test-results.md"><strong>Test report</strong></a>
   </p>
@@ -98,8 +98,9 @@ Most full-stack demos use REST over HTTP/1.1. This project demonstrates the **ne
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for Docker Compose)
 - [mkcert](https://github.com/FiloSottile/mkcert) (for local TLS certs)
-- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download) (optional, for local dev)
-- [Node.js 20](https://nodejs.org/) (optional, for local dev)
+- [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download) (optional, for local dev)
+- [Node.js 22](https://nodejs.org/) (optional, for local dev)
+- `protoc` + `protoc-gen-grpc-web` (only for local frontend dev — Docker installs them automatically)
 
 ### 1. Clone
 
@@ -318,14 +319,14 @@ Full per-test breakdown and coverage table: [`docs/test-results.md`](docs/test-r
 
 | Layer | Technology |
 |---|---|
-| Backend runtime | .NET 8 / ASP.NET Core |
-| gRPC framework | `Grpc.AspNetCore` |
+| Backend runtime | .NET 10 / ASP.NET Core |
+| gRPC framework | `Grpc.AspNetCore` 2.70 |
 | HTTP/3 transport | Kestrel + `System.Net.Quic` (libmsquic) |
-| Database | PostgreSQL 16 + EF Core 8 |
+| Database | PostgreSQL 16 + EF Core 10 |
 | Proxy | Envoy 1.29 |
-| Frontend | Angular 17 (standalone, signals) |
+| Frontend | Angular 21 (standalone, signals) |
 | gRPC-Web client | `grpc-web` npm package + `protoc-gen-grpc-web` |
-| UI | Angular Material 17 |
+| UI | Angular Material 21 |
 | Containerization | Docker + Docker Compose |
 | CI/CD | GitHub Actions |
 

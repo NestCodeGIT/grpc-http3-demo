@@ -30,6 +30,14 @@ if ! command -v protoc-gen-grpc-web >/dev/null 2>&1; then
   exit 1
 fi
 
+# Newer protobuf-compiler (≥ 25) no longer ships protoc-gen-js — protoc invokes
+# it implicitly for --js_out. Install via: npm install -g protoc-gen-js
+if ! command -v protoc-gen-js >/dev/null 2>&1; then
+  echo "✖ protoc-gen-js not found in PATH."
+  echo "  Install:  npm install -g protoc-gen-js"
+  exit 1
+fi
+
 protoc -I="$PROTO_DIR" \
   --js_out=import_style=commonjs:"$OUT_DIR" \
   --grpc-web_out=import_style=typescript,mode=grpcwebtext:"$OUT_DIR" \

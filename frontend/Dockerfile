@@ -6,7 +6,8 @@ WORKDIR /app
 RUN apk add --no-cache bash protoc curl \
  && curl -fsSL https://github.com/grpc/grpc-web/releases/download/1.5.0/protoc-gen-grpc-web-1.5.0-linux-x86_64 \
       -o /usr/local/bin/protoc-gen-grpc-web \
- && chmod +x /usr/local/bin/protoc-gen-grpc-web
+ && chmod +x /usr/local/bin/protoc-gen-grpc-web \
+ && npm install -g protoc-gen-js
 
 # The proto file lives outside the frontend context, so the docker-compose build
 # context must be the repository root for this Dockerfile (see docker-compose.yml).

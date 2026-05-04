@@ -61,7 +61,7 @@
     <text x="330" y="335" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">SCHRITT 2</text>
     <text x="330" y="358" text-anchor="middle" font-size="20" font-weight="800" fill="#fff">Backend</text>
   </g>
-  <text x="330" y="438" text-anchor="middle" font-size="15" font-weight="600" fill="#f1f5f9">.NET 8 · Kestrel</text>
+  <text x="330" y="438" text-anchor="middle" font-size="15" font-weight="600" fill="#f1f5f9">.NET 10 · Kestrel</text>
   <text x="330" y="458" text-anchor="middle" font-size="12" fill="#cbd5e1">HTTP/1+2+3 (QUIC)</text>
   <text x="330" y="474" text-anchor="middle" font-size="12" fill="#cbd5e1">EF Core · PostgreSQL</text>
 
@@ -81,7 +81,7 @@
     <text x="730" y="335" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">SCHRITT 4</text>
     <text x="730" y="358" text-anchor="middle" font-size="20" font-weight="800" fill="#fff">Frontend</text>
   </g>
-  <text x="730" y="438" text-anchor="middle" font-size="15" font-weight="600" fill="#f1f5f9">Angular 17 · Signals</text>
+  <text x="730" y="438" text-anchor="middle" font-size="15" font-weight="600" fill="#f1f5f9">Angular 21 · Signals</text>
   <text x="730" y="458" text-anchor="middle" font-size="12" fill="#cbd5e1">grpc-web Client</text>
   <text x="730" y="474" text-anchor="middle" font-size="12" fill="#cbd5e1">Live-Stream UI</text>
 

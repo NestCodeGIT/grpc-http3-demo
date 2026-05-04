@@ -4,298 +4,277 @@
 
   <img src="docs/roadmap/roadmap.svg" alt="Project roadmap" width="100%">
 
-  <h3>A production-grade full-stack application demonstrating <strong>gRPC server-streaming</strong> and <strong>HTTP/3 (QUIC)</strong> transport — built with ASP.NET Core 10 and Angular 21.</h3>
+  <p><em>A small full-stack playground I built to actually <strong>use</strong> gRPC server-streaming and HTTP/3 in anger — not just read about them on a slide deck.</em></p>
 
   <p>
     <a href="https://github.com/yourusername/grpc-http3-demo/actions/workflows/ci.yml">
       <img src="https://github.com/yourusername/grpc-http3-demo/actions/workflows/ci.yml/badge.svg" alt="CI">
     </a>
-    <img src="https://img.shields.io/badge/.NET-10.0-512bd4?logo=dotnet&logoColor=white" alt=".NET 10">
-    <img src="https://img.shields.io/badge/Angular-17-dd0031?logo=angular&logoColor=white" alt="Angular 17">
-    <img src="https://img.shields.io/badge/gRPC-protocol-00BCD4" alt="gRPC">
+    <img src="https://img.shields.io/badge/.NET-10-512bd4?logo=dotnet&logoColor=white" alt=".NET 10">
+    <img src="https://img.shields.io/badge/Angular-21-dd0031?logo=angular&logoColor=white" alt="Angular 21">
+    <img src="https://img.shields.io/badge/gRPC-Web-00BCD4" alt="gRPC">
     <img src="https://img.shields.io/badge/HTTP%2F3-QUIC-4CAF50" alt="HTTP/3">
-    <img src="https://img.shields.io/badge/Tests-25%2F25_passing-success" alt="Tests">
-    <img src="https://img.shields.io/badge/Service_coverage-100%25-success" alt="Coverage">
+    <img src="https://img.shields.io/badge/tests-25%2F25-success" alt="Tests">
+    <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License">
   </p>
 
   <p>
-
+    <a href="docs/roadmap/tutorial.md"><strong>Tutorial (DE)</strong></a>
     &nbsp;·&nbsp;
-   <a href="docs/roadmap/tutorial.md"><strong>Tutorial (Deutsch)</strong></a>
-    &nbsp;·&nbsp;
-    ✅ <a href="docs/test-results.md"><strong>Test report</strong></a>
+    <a href="docs/test-results.md"><strong>Test report</strong></a>
   </p>
 
 </div>
 
 ---
 
-## Why This Project?
+## What is this?
 
-Most full-stack demos use REST over HTTP/1.1. This project demonstrates the **next generation** of web transport:
+I kept seeing job ads ask for "experience with gRPC and HTTP/3" but most public examples were either toy snippets or 2,000-line enterprise things. So I built something in between: a real, working full-stack app — Angular on the front, ASP.NET Core on the back, PostgreSQL underneath — that actually exercises the parts people care about:
 
-| Feature | REST / HTTP/1.1 | This project |
+- A **single `.proto` file** that generates both the C# server stub and the TypeScript client
+- A **server-streaming RPC** that pushes live updates to the browser, no WebSockets, no polling
+- **HTTP/3 over QUIC** end-to-end on Kestrel, verifiable in DevTools
+- **Envoy** in the middle so the browser can speak gRPC-Web while the API speaks native gRPC
+- Everything wired up so `docker compose up --build` is the only command you need to run
+
+It's small enough to read in an afternoon and complete enough that I'd be comfortable showing it in an interview.
+
+---
+
+## Why bother with gRPC + HTTP/3?
+
+REST over HTTP/1.1 is fine for a lot of things. It stops being fine the moment you need any of these:
+
+| You want… | REST / HTTP/1.1 | This stack |
 |---|---|---|
-| Protocol | Text-based, verbose | Binary Protobuf — 3-10× smaller |
-| Streaming | Polling or SSE | Native gRPC server-streaming |
-| Transport | TCP (HTTP/1.1 or /2) | **QUIC (HTTP/3)** — 0-RTT, no head-of-line blocking |
-| Type safety | OpenAPI / manual | Protobuf contract — code generated |
-| Multiplexing | HTTP/2 only | HTTP/3 + QUIC at the transport layer |
+| A typed contract both sides agree on | OpenAPI, manually kept in sync | `.proto` → compiler errors on drift |
+| Real-time push from the server | SSE or polling, both clunky | Native server-streaming RPC |
+| Smaller payloads on mobile | JSON | Protobuf — usually 3–10× smaller |
+| Faster reconnects, no head-of-line blocking | TCP | QUIC (UDP) with 0-RTT |
+| Multiplexed requests | HTTP/2 only | HTTP/3 + QUIC |
+
+If your API is just a few CRUD endpoints, REST is still the right answer. But the moment you reach for "we'll just poll every 2 seconds" or "let's add a WebSocket layer", you're already in territory where this stack pays for itself.
 
 ---
 
-## Architecture
+## How it fits together
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                      Browser                            │
-│  Angular 17 — gRPC-Web client (TypeScript, generated)   │
-└──────────────────────┬──────────────────────────────────┘
-                       │  gRPC-Web (HTTP/1.1 or HTTP/2)
-                       ▼
-┌──────────────────────────────────────────────────────────┐
-│              Envoy Proxy  :8080                          │
-│  Translates gRPC-Web ↔ native gRPC (HTTP/2)             │
-└──────────────────────┬───────────────────────────────────┘
-                       │  gRPC over HTTP/2
-                       ▼
-┌──────────────────────────────────────────────────────────┐
-│         ASP.NET Core 8 API  :5001                        │
-│  Kestrel: HTTP/1.1 + HTTP/2 + HTTP/3 (QUIC)             │
-│  Alt-Svc header upgrades clients to HTTP/3               │
-│  gRPC service: Unary + Server-Streaming RPCs             │
-└──────────────────────┬───────────────────────────────────┘
-                       │  EF Core (Npgsql)
-                       ▼
-              ┌─────────────────┐
-              │   PostgreSQL    │
-              └─────────────────┘
+┌───────────────────────────────┐
+│  Browser — Angular 21         │
+│  grpc-web client + Signals    │
+└──────────────┬────────────────┘
+               │  gRPC-Web (HTTP/1.1 or HTTP/2)
+               ▼
+┌───────────────────────────────┐
+│  Envoy 1.29  :8080            │
+│  gRPC-Web ↔ native gRPC       │
+└──────────────┬────────────────┘
+               │  gRPC over HTTP/2
+               ▼
+┌───────────────────────────────┐
+│  ASP.NET Core 10 API  :5001   │
+│  Kestrel: HTTP/1 + 2 + 3      │
+│  Alt-Svc upgrades to QUIC     │
+└──────────────┬────────────────┘
+               │  EF Core (Npgsql)
+               ▼
+┌───────────────────────────────┐
+│  PostgreSQL 16                │
+└───────────────────────────────┘
 ```
 
-**Flow:**
-1. Angular calls gRPC methods via the generated `TaskServiceClient`
-2. Envoy receives gRPC-Web requests and forwards them as native gRPC to the API
-3. ASP.NET Core serves all traffic over HTTP/3 — browsers upgrade automatically via `Alt-Svc`
-4. Server-streaming RPCs push task updates to Angular in real time
+The browser part is the awkward bit. Browsers can't speak native gRPC because JavaScript has no access to HTTP/2 trailers, so Envoy translates between gRPC-Web (what the browser can do) and gRPC (what the backend speaks). It's one config file. No code.
 
 ---
 
-## Features
+## Getting started
 
-- **5 gRPC RPC methods**: `GetTask`, `ListTasks`, `CreateTask`, `UpdateTask`, `DeleteTask`
-- **Server-streaming**: `StreamTasks` — pushes live updates to Angular every 2 seconds
-- **HTTP/3 / QUIC**: Kestrel configured with `Http1AndHttp2AndHttp3` — verifiable in Chrome DevTools
-- **Contract-first API**: single `.proto` file shared between backend and frontend
-- **Angular Signals**: reactive state without RxJS boilerplate
-- **Docker Compose**: one command to run the full stack
-- **CI/CD**: GitHub Actions — build, test, and Docker build on every push
-
----
-
-## Quick Start
-
-### Prerequisites
-
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for Docker Compose)
-- [mkcert](https://github.com/FiloSottile/mkcert) (for local TLS certs)
-- [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download) (optional, for local dev)
-- [Node.js 22](https://nodejs.org/) (optional, for local dev)
-- `protoc` + `protoc-gen-grpc-web` (only for local frontend dev — Docker installs them automatically)
-
-### 1. Clone
+You need Docker, mkcert (for local TLS), and that's it. Everything else lives inside containers.
 
 ```bash
 git clone https://github.com/yourusername/grpc-http3-demo.git
 cd grpc-http3-demo
-```
 
-### 2. Generate TLS Certificates
-
-HTTP/3 requires HTTPS. Generate trusted local certs:
-
-```bash
+# Generate a locally-trusted cert — HTTP/3 won't work without HTTPS
 bash certs/generate.sh
+
+# Build and run the whole stack
+docker compose up --build
 ```
 
-### 3. Start Everything
-
-```bash
-docker-compose up --build
-```
+Once it's up:
 
 | Service | URL |
 |---|---|
-| Angular frontend | http://localhost:4200 |
-| gRPC API (HTTP/3) | https://localhost:5001 |
-| Envoy (gRPC-Web) | http://localhost:8080 |
+| Angular app | <http://localhost:4200> |
+| gRPC API (HTTP/3) | <https://localhost:5001> |
+| Envoy gRPC-Web bridge | <http://localhost:8080> |
+
+### See HTTP/3 in action
+
+1. Open <https://localhost:5001/healthz> in Chrome
+2. DevTools → Network → enable the **Protocol** column
+3. The first request shows `h2`, the next ones show **`h3`** — that's the `Alt-Svc` header doing its job
+
+### See server-streaming in action
+
+1. Open <http://localhost:4200/stream> and click **Start Stream**
+2. In another tab, create a task on the list page
+3. Within ~2 seconds it shows up at the top of the live feed
 
 ---
 
-## Verify HTTP/3
-
-1. Open Chrome → `https://localhost:5001/healthz`
-2. Open DevTools → **Network** tab
-3. Look at the **Protocol** column — you should see **h3**
-
-> **Note**: The `Alt-Svc: h3=":5001"` response header triggers the browser upgrade from HTTP/2 to HTTP/3 on subsequent requests.
-
----
-
-## Verify gRPC Streaming
-
-1. Navigate to http://localhost:4200/stream
-2. Click **Start Stream**
-3. The page updates in real time — new tasks appear at the top as the server pushes data
-4. Open DevTools → Network → filter `Fetch/XHR` → see the long-lived streaming request
-
----
-
-## Local Development (without Docker)
+## Running things without Docker
 
 ### Backend
 
 ```bash
 cd backend/GrpcApi
-
-# Start PostgreSQL (Docker)
-docker run -d -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=grpc_tasks -p 5432:5432 postgres:16-alpine
-
-# Run migrations and start
+docker run -d -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=grpc_tasks \
+  -p 5432:5432 postgres:16-alpine
 dotnet run
 ```
 
-API available at `https://localhost:5001`
+> Tip: prefix `dotnet` commands with `DOTNET_SYSTEM_NET_DISABLEIPV6=1` if `restore` hangs — it's a known issue on some Linux setups.
 
 ### Frontend
 
 ```bash
 cd frontend
-
-# Generate gRPC-Web client from .proto
-npm run proto:gen   # requires protoc + protoc-gen-grpc-web
-
-# Install and serve
-npm install
-npm start           # https://localhost:4200
+npm ci             # the prebuild hook generates the gRPC-Web client
+npm start          # https://localhost:4200
 ```
 
----
-
-## API Reference
-
-All communication is via **gRPC** (no REST endpoints).
-
-| RPC | Type | Request | Response |
-|---|---|---|---|
-| `GetTask` | Unary | `GetTaskRequest { id }` | `TaskResponse` |
-| `ListTasks` | Unary | `ListTasksRequest { page, page_size }` | `ListTasksResponse { tasks[] }` |
-| `CreateTask` | Unary | `CreateTaskRequest { title, description }` | `TaskResponse` |
-| `UpdateTask` | Unary | `UpdateTaskRequest { id, title, status }` | `TaskResponse` |
-| `DeleteTask` | Unary | `DeleteTaskRequest { id }` | `DeleteTaskResponse { success, message }` |
-| `StreamTasks` | **Server-streaming** | `StreamTasksRequest { filter_status }` | `stream TaskResponse` |
-
-**Task statuses**: `pending` · `in_progress` · `done` · `cancelled`
+If you don't have `protoc` and `protoc-gen-grpc-web` on your machine, just use the Docker path — the frontend image installs them for you.
 
 ---
 
-## Project Structure
+## The API at a glance
+
+A single `.proto` file is the source of truth. All six methods live there:
+
+| RPC | Type | What it does |
+|---|---|---|
+| `GetTask` | unary | fetch one task by id |
+| `ListTasks` | unary | paginated list |
+| `CreateTask` | unary | adds a task |
+| `UpdateTask` | unary | mutates title/status |
+| `DeleteTask` | unary | idempotent delete |
+| `StreamTasks` | **server-streaming** | pushes the latest tasks every 2 s |
+
+Statuses are a small enum: `pending`, `in_progress`, `done`, `cancelled`.
+
+---
+
+## A couple of things I learned the hard way
+
+These are the bugs that actually happened to me. They're worth knowing about because the docs don't shout about them.
+
+**`responseStream.WriteAsync(message, cancellationToken)` throws at runtime.** The two-argument overload isn't supported in the in-process gRPC server. Use the single-arg version and check `context.CancellationToken.IsCancellationRequested` yourself. The tests in this repo catch this regression now.
+
+**Casting `IQueryable` to `IOrderedQueryable` after `.Where(...)` blows up.** Order matters: filter first, then sort. Looks fine in the IDE, throws at runtime. Again — caught by a test.
+
+**Don't forget to expose UDP in `docker-compose.yml`.** Port `5001/tcp` *and* `5001/udp`. Without UDP, QUIC silently falls back to HTTP/2 and you'll wonder why DevTools never shows `h3`.
+
+**Fresh `dotnet restore` can hang for minutes on Linux.** Set `DOTNET_SYSTEM_NET_DISABLEIPV6=1`. That's a Microsoft NuGet/IPv6 issue, not a code issue.
+
+---
+
+## How the project is laid out
 
 ```
 grpc-http3-demo/
 ├── backend/
 │   ├── GrpcApi/
-│   │   ├── Protos/task.proto       ← single source of truth for API contract
+│   │   ├── Protos/task.proto         ← single source of truth
 │   │   ├── Services/TaskGrpcService.cs
-│   │   ├── Data/
-│   │   │   ├── AppDbContext.cs
-│   │   │   └── TaskEntity.cs
-│   │   └── Program.cs             ← HTTP/3 Kestrel config here
-│   ├── GrpcApi.Tests/             ← xUnit + FluentAssertions, 25 tests
-│   │   ├── Helpers/                 (TestServerCallContext, CapturingStreamWriter, TestDb)
-│   │   ├── TaskGrpcServiceUnaryTests.cs
-│   │   ├── TaskGrpcServiceStreamingTests.cs
-│   │   └── TaskEntityTests.cs
+│   │   ├── Data/{AppDbContext,TaskEntity}.cs
+│   │   └── Program.cs                ← HTTP/3 Kestrel config lives here
+│   ├── GrpcApi.Tests/                ← xUnit, 25 tests, ~0.8 s
 │   └── Dockerfile
 ├── frontend/
 │   ├── src/app/
-│   │   ├── core/grpc/
-│   │   │   ├── generated/          ← protoc-generated TypeScript client
-│   │   │   └── task.service.ts     ← wraps gRPC-Web in Observables + Signals
-│   │   └── features/tasks/
-│   │       ├── task-list/          ← unary RPC demo
-│   │       └── task-stream/        ← server-streaming demo
+│   │   ├── core/grpc/                ← generated client + service wrapper
+│   │   └── features/tasks/           ← list (unary) + stream (streaming)
 │   └── Dockerfile
-├── proxy/envoy.yaml               ← gRPC-Web ↔ gRPC bridge
-├── certs/generate.sh              ← mkcert TLS setup
+├── proxy/envoy.yaml                   ← gRPC-Web ↔ gRPC bridge
+├── certs/generate.sh                  ← mkcert helper
 ├── docs/
-│   ├── article.md                 ← deep-dive write-up (md + HTML)
-│   ├── test-results.md            ← test &amp; coverage report
-│   └── roadmap/
-│       ├── roadmap.svg            ← visual project roadmap (German)
-│       └── tutorial.md            ← step-by-step tutorial (German)
+│   ├── test-results.md
+│   └── roadmap/{roadmap.svg,tutorial.md}
 ├── docker-compose.yml
 └── .github/workflows/ci.yml
 ```
 
 ---
 
-## Key Implementation Details
+## A taste of the code
 
-### HTTP/3 Configuration (ASP.NET Core)
+**Turning on HTTP/3** in `Program.cs` is genuinely a one-liner:
 
 ```csharp
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(5001, listenOptions =>
+    options.ListenAnyIP(5001, listen =>
     {
-        listenOptions.UseHttps();
-        listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3; // ← HTTP/3 enabled
+        listen.UseHttps();
+        listen.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
     });
 });
 ```
 
-Kestrel automatically adds `Alt-Svc: h3=":5001"` to responses, triggering QUIC upgrade.
-
-### Server-Streaming RPC
+**The streaming RPC.** No heartbeats, no reconnect logic — gRPC handles all of it for you:
 
 ```csharp
 public override async Task StreamTasks(
     StreamTasksRequest request,
-    IServerStreamWriter<TaskResponse> responseStream,
+    IServerStreamWriter<TaskResponse> stream,
     ServerCallContext context)
 {
     while (!context.CancellationToken.IsCancellationRequested)
     {
-        var tasks = await db.Tasks.OrderByDescending(t => t.UpdatedAt).Take(10).ToListAsync();
-        foreach (var task in tasks)
-            await responseStream.WriteAsync(MapToResponse(task));
-        await Task.Delay(TimeSpan.FromSeconds(2));
+        var tasks = await _db.Tasks
+            .Where(t => string.IsNullOrEmpty(request.FilterStatus) || t.Status == request.FilterStatus)
+            .OrderByDescending(t => t.UpdatedAt)
+            .Take(10)
+            .ToListAsync();
+
+        foreach (var t in tasks)
+            await stream.WriteAsync(Map(t));
+
+        await Task.Delay(TimeSpan.FromSeconds(2), context.CancellationToken);
     }
 }
 ```
 
-### Angular Signal-Based Reactive State
+**Consuming the stream in Angular** with Signals — no RxJS gymnastics needed:
 
 ```typescript
 readonly streamedTasks = signal<Task[]>([]);
 
-stream.on('data', (response) => {
-  this.streamedTasks.update(tasks => [this.mapTask(response), ...tasks].slice(0, 50));
-});
+startStream(filter = ''): void {
+  const stream = this.client.streamTasks({ filterStatus: filter }, {});
+  stream.on('data', resp => {
+    this.streamedTasks.update(curr => [this.toTask(resp), ...curr].slice(0, 50));
+  });
+}
 ```
 
 ---
 
-## Testing
+## Tests
 
-The backend has a dedicated xUnit test project at `backend/GrpcApi.Tests/` covering **all 6 RPCs** including the server-streaming one.
+There's a dedicated test project at `backend/GrpcApi.Tests/`. It covers all six RPCs (yes, including the streaming one) without booting Kestrel.
 
-| Metric | Value |
+| | |
 |---|---|
-| Tests | **25 / 25 passing** ✅ |
+| Test framework | xUnit + FluentAssertions |
+| Database | EF Core InMemory, fresh per test |
+| Tests | **25 / 25 passing** |
 | Duration | ~0.8 s |
-| `TaskGrpcService` line coverage | **100 %** |
-| `TaskGrpcService` branch coverage | **100 %** |
+| `TaskGrpcService` line + branch coverage | **100 %** |
 
 ```bash
 cd backend
@@ -304,45 +283,39 @@ DOTNET_SYSTEM_NET_DISABLEIPV6=1 \
     --collect:"XPlat Code Coverage"
 ```
 
-Highlights of the test design:
+The trick to testing gRPC without a real server is three small helpers:
 
-- **`TestServerCallContext`** — minimal `ServerCallContext` implementation, no Kestrel needed.
-- **`CapturingStreamWriter<T>`** — captures every message a server-streaming RPC writes for assertion.
-- **`TestDb.Create()`** — fresh isolated EF Core InMemory database per test (zero cross-test pollution).
-- **Streaming tests** verify both happy-path push, server-side filter, and prompt cancellation.
+- `TestServerCallContext` — a stand-in `ServerCallContext` so you can call RPC methods directly
+- `CapturingStreamWriter<T>` — collects every message a streaming RPC writes, so you can assert against it
+- `TestDb.Create()` — a factory for isolated InMemory databases, one per test
 
-Full per-test breakdown and coverage table: [`docs/test-results.md`](docs/test-results.md).
+Full breakdown in [`docs/test-results.md`](docs/test-results.md).
 
 ---
 
-## Tech Stack
+## Tech stack
 
-| Layer | Technology |
+| Layer | What I used |
 |---|---|
-| Backend runtime | .NET 10 / ASP.NET Core |
-| gRPC framework | `Grpc.AspNetCore` 2.70 |
-| HTTP/3 transport | Kestrel + `System.Net.Quic` (libmsquic) |
-| Database | PostgreSQL 16 + EF Core 10 |
-| Proxy | Envoy 1.29 |
-| Frontend | Angular 21 (standalone, signals) |
-| gRPC-Web client | `grpc-web` npm package + `protoc-gen-grpc-web` |
-| UI | Angular Material 21 |
-| Containerization | Docker + Docker Compose |
-| CI/CD | GitHub Actions |
+| Backend | .NET 10, ASP.NET Core, `Grpc.AspNetCore` 2.70 |
+| Transport | Kestrel + `System.Net.Quic` (libmsquic) |
+| Database | PostgreSQL 16, EF Core 10, Npgsql |
+| Proxy | Envoy 1.29 (gRPC-Web filter) |
+| Frontend | Angular 21 (standalone components + Signals), TypeScript 5.9 |
+| gRPC client | `grpc-web` 1.5 + `protoc-gen-grpc-web` |
+| Containers | Docker + Docker Compose |
+| CI | GitHub Actions (build, test, coverage, Docker images) |
 
 ---
 
-## Resume Talking Points
+## Suggested GitHub topics
 
-- Configured **HTTP/3 / QUIC** in ASP.NET Core Kestrel — reducing connection establishment latency via 0-RTT handshake and eliminating TCP head-of-line blocking
-- Implemented **gRPC server-streaming** with real-time Angular client using `grpc-web` and Angular Signals
-- Defined **contract-first API** with Protocol Buffers — shared `.proto` generates both C# server stubs and TypeScript client code
-- Bridged browser gRPC limitations via **Envoy gRPC-Web proxy** for transparent protocol translation
-- Containerized full-stack with **Docker Compose** including health checks and dependency ordering
-- Built **GitHub Actions CI** pipeline with PostgreSQL service container for integration tests
+If you fork or star this repo, these are the topics I'd recommend tagging it with so it shows up in the right searches:
+
+`dotnet` · `dotnet10` · `aspnetcore` · `grpc` · `grpc-web` · `http3` · `quic` · `angular` · `angular21` · `typescript` · `protobuf` · `envoy` · `postgresql` · `docker` · `streaming` · `realtime`
 
 ---
 
 ## License
 
-MIT — see [LICENSE](LICENSE)
+[MIT](LICENSE) — do whatever you want with it. If it helps you land an interview or ship something cool, that's already the best outcome I could hope for.

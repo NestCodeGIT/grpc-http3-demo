@@ -1,6 +1,6 @@
 # Test Results — `GrpcApi.Tests`
 
-> Generated from `dotnet test ... --collect:"XPlat Code Coverage"` on Linux / .NET 8.0 / Release.
+> Generated from `dotnet test ... --collect:"XPlat Code Coverage"` on Linux / .NET 10.0 / Release.
 
 ## Summary
 
@@ -11,7 +11,7 @@
 | **Failed**                | 0              |
 | **Skipped**               | 0              |
 | **Duration**              | ~0.8 s         |
-| **Test framework**        | xUnit 2.7      |
+| **Test framework**        | xUnit 2.9      |
 | **Assertion library**     | FluentAssertions 6.12 |
 | **Database under test**   | EF Core InMemory (isolated per test) |
 

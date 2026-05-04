@@ -29,8 +29,8 @@ docker --version          # ≥ 24
 mkcert -version           # für lokale TLS-Zertifikate
 
 # Optional (für lokale Entwicklung ohne Docker)
-dotnet --version          # ≥ 8.0
-node --version            # ≥ 20
+dotnet --version          # ≥ 10.0
+node --version            # ≥ 22
 ```
 
 ---
@@ -67,7 +67,7 @@ service TaskService {
 
 ---
 
-## Schritt 2 — Das Backend (.NET 8 + Kestrel + HTTP/3)
+## Schritt 2 — Das Backend (.NET 10 + Kestrel + HTTP/3)
 
 ### 2a) HTTP/3 in Kestrel aktivieren
 

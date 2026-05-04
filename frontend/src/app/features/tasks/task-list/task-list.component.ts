@@ -11,7 +11,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { GrpcTaskService, Task } from '../../core/grpc/task.service';
+import { GrpcTaskService, Task } from '../../../core/grpc/task.service';
 
 @Component({
   selector: 'app-task-list',
